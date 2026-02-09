@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SpaceRouteImport } from './routes/space'
+import { Route as LoginRouteImport } from './routes/login'
 import { Route as ChatRouteImport } from './routes/chat'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
@@ -19,6 +20,11 @@ import { Route as UsersIdRouteImport } from './routes/users/$id'
 const SpaceRoute = SpaceRouteImport.update({
   id: '/space',
   path: '/space',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ChatRoute = ChatRouteImport.update({
@@ -51,6 +57,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/chat': typeof ChatRoute
+  '/login': typeof LoginRoute
   '/space': typeof SpaceRoute
   '/users/$id': typeof UsersIdRoute
   '/users': typeof UsersIndexRoute
@@ -59,6 +66,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/chat': typeof ChatRoute
+  '/login': typeof LoginRoute
   '/space': typeof SpaceRoute
   '/users/$id': typeof UsersIdRoute
   '/users': typeof UsersIndexRoute
@@ -68,20 +76,29 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/chat': typeof ChatRoute
+  '/login': typeof LoginRoute
   '/space': typeof SpaceRoute
   '/users/$id': typeof UsersIdRoute
   '/users/': typeof UsersIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/chat' | '/space' | '/users/$id' | '/users'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/chat'
+    | '/login'
+    | '/space'
+    | '/users/$id'
+    | '/users'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/chat' | '/space' | '/users/$id' | '/users'
+  to: '/' | '/about' | '/chat' | '/login' | '/space' | '/users/$id' | '/users'
   id:
     | '__root__'
     | '/'
     | '/about'
     | '/chat'
+    | '/login'
     | '/space'
     | '/users/$id'
     | '/users/'
@@ -91,6 +108,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   ChatRoute: typeof ChatRoute
+  LoginRoute: typeof LoginRoute
   SpaceRoute: typeof SpaceRoute
   UsersIdRoute: typeof UsersIdRoute
   UsersIndexRoute: typeof UsersIndexRoute
@@ -103,6 +121,13 @@ declare module '@tanstack/react-router' {
       path: '/space'
       fullPath: '/space'
       preLoaderRoute: typeof SpaceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/chat': {
@@ -147,6 +172,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   ChatRoute: ChatRoute,
+  LoginRoute: LoginRoute,
   SpaceRoute: SpaceRoute,
   UsersIdRoute: UsersIdRoute,
   UsersIndexRoute: UsersIndexRoute,
