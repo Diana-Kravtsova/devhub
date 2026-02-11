@@ -1,73 +1,85 @@
-# React + TypeScript + Vite
+# DevHub: Dashboard & Chat Platform
+[DEMO](https://devhub-navy.vercel.app?_vercel_share=EbAcbrJZ5G5PRLIuIf2GA5rH7HPMTZgF)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern Single Page Application (SPA) built with **React**, **Vite**, and **TypeScript**, featuring robust routing, state management, and real-time communication.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+* **User Management:** Fetching and displaying user data using **TanStack Query** (integrating with REST API).
+* **Role-Based Access Control (RBAC):** Protected routes and UI elements based on user roles (Admin, Moderator, User).
+* **Real-time Chat:** Fully functional WebSocket chat module connected to `wss://ws.ifelse.io`.
+* **GraphQL Integration:** Dedicated page fetching data from a **GraphQL API** (Apollo Sandbox).
+* **Advanced Routing:** Type-safe routing and breadcrumbs using **TanStack Router**.
+* **Testing Suite:** Comprehensive test coverage including **Unit**, **Modular**, and **Snapshot** tests.
 
-## React Compiler
+## 🛠 Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Core
 
-## Expanding the ESLint configuration
+* **React 18** + **Vite**
+* **TypeScript** 
+* **Tailwind CSS** + **Shadcn UI**
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### State & Data
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+* **TanStack Router:** File-based, type-safe routing.
+* **TanStack Query (React Query):** Server state management and caching.
+* **Apollo Client:** GraphQL data fetching.
+* **Context API:** Global Auth state management.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Testing & Quality
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+* **Vitest:** Test runner.
+* **React Testing Library:** Component testing.
+* **JSDOM:** Browser environment for Node.
+
+---
+
+## 📁 Project Structure (Overview)
+
+* `src/api`: REST service definitions.
+* `src/components`: Reusable UI elements (Shadcn) and Layouts.
+* `src/hooks`: Custom hooks for permissions and Auth.
+* `src/routes`: File-based routing tree (Chat, Users, User Details).
+* `src/tests`: Unit, Modular, and Snapshot test suites.
+
+---
+
+## 🏃 Getting Started
+
+### Prerequisites
+
+* Node.js (v18+)
+* npm / yarn
+
+### Installation
+
+1. Clone the repository:
+```bash
+  git clone <your-repo-url>
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+2. Install dependencies:
+```bash
+  npm install
 ```
+
+### Development
+
+Start the development server:
+
+```bash
+  npm run dev
+```
+
+### Testing
+
+Run the test suite (Unit, Modular, Snapshots):
+
+```bash
+  npm run test
+```
+
+---
+
+* **API Reference:** [DummyJSON](https://dummyjson.com/) / [Apollo Sandbox](https://studio.apollographql.com/sandbox/explorer)
