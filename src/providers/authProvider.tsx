@@ -2,6 +2,7 @@ import { useState } from 'react';
 import type { User } from '@/api/types.ts';
 import { AuthContext } from '../contexts/AuthContext';
 import { logoutUser } from '@/api/auth.ts';
+import { redirect } from '@tanstack/react-router';
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(() => {
@@ -17,12 +18,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const logout = () => {
     setUser(null);
     logoutUser();
-    window.location.href = '/login'
+    redirect({ to: '/login' });
   };
 
   return (
-    <AuthContext.Provider value={{ user, isAuthenticated: !!user, login, logout }}>
-      {children}
-    </AuthContext.Provider>
+    <AuthContext.Provider value={{ user, isAuthenticated: !!user, login, logout }}>{children}</AuthContext.Provider>
   );
 }
