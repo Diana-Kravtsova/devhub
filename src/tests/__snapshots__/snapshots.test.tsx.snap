@@ -1,0 +1,20 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Chat Input matches snapshot 1`] = `
+<DocumentFragment>
+  <input
+    class="bg-slate-800 text-white"
+    placeholder="Type a message..."
+  />
+</DocumentFragment>
+`;
+
+exports[`Status Badge matches snapshot 1`] = `
+<DocumentFragment>
+  <span
+    class="bg-green-500/20 text-green-500 px-2 py-1"
+  >
+    Online
+  </span>
+</DocumentFragment>
+`;
