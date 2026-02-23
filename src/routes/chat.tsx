@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { ScrollArea } from '@/components/ui/scroll-area';
+import { cn } from '@/lib/utils';
 
 interface ChatMessage {
   id: number;
@@ -98,7 +99,10 @@ function ChatPage() {
           <CardTitle className='flex items-center justify-between '>
             Chat Room
             <span
-              className={`text-xs px-2 py-1 rounded-full ${isConnected ? 'bg-green-500/20 text-green-500' : 'bg-red-500/20 text-red-500'}`}
+              className={cn(
+                'text-xs px-2 py-1 rounded-full',
+                isConnected ? 'bg-green-500/20 text-green-500' : 'bg-red-500/20 text-red-500',
+              )}
             >
               {isConnected ? 'Online' : 'Offline'}
             </span>
